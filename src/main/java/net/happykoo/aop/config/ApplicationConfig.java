@@ -1,6 +1,7 @@
 package net.happykoo.aop.config;
 
 import net.happykoo.aop.dao.UserDao;
+import net.happykoo.aop.handler.TxHandler;
 import net.happykoo.aop.service.UserSercviceTx;
 import net.happykoo.aop.service.UserService;
 import net.happykoo.aop.service.UserServiceImpl;
@@ -11,6 +12,7 @@ import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.lang.reflect.Proxy;
 
 @Configuration
 public class ApplicationConfig {
@@ -34,7 +36,10 @@ public class ApplicationConfig {
 
     @Bean
     public UserService userService(UserDao userDao, PlatformTransactionManager transactionManager) {
-        return new UserSercviceTx(transactionManager, new UserServiceImpl(userDao));
+        UserService target = new UserServiceImpl(userDao);
+        return (UserService) Proxy.newProxyInstance(getClass().getClassLoader(),
+                new Class[] {UserService.class},
+                new TxHandler(transactionManager, target, "createAll"));
     }
 
     @Bean
