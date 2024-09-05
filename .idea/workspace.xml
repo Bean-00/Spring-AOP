@@ -4,25 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16cd833c-a555-405a-917b-459d01c3667b" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/config/ApplicationConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/dao/UserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/vo/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/net/happykoo/aop/dao/UserDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/net/happykoo/aop/service/UserServiceTest.java" afterDir="false" />
+    <list default="true" id="16cd833c-a555-405a-917b-459d01c3667b" name="변경" comment="트랜잭션 동기화 해결">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/config/ApplicationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +65,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
@@ -101,7 +91,7 @@
     "Gradle.UserServiceTest.test.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "transaction__sync",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/bean/test/aop_study/src/test/java",
     "node.js.detected.package.eslint": "true",
@@ -274,11 +264,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1725545617973</updated>
-      <workItem from="1725545619046" duration="5758000" />
+      <workItem from="1725545619046" duration="6985000" />
     </task>
+    <task id="LOCAL-00001" summary="트랜잭션 동기화 해결">
+      <option name="closed" value="true" />
+      <created>1725552088800</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725552088800</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="트랜잭션 동기화 해결" />
+    <option name="LAST_COMMIT_MESSAGE" value="트랜잭션 동기화 해결" />
   </component>
 </project>

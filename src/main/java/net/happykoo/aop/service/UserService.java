@@ -3,6 +3,9 @@ package net.happykoo.aop.service;
 import net.happykoo.aop.dao.UserDao;
 import net.happykoo.aop.vo.User;
 import org.springframework.jdbc.datasource.DataSourceUtils;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
@@ -14,18 +17,16 @@ import java.util.Objects;
 
 public class UserService {
 
-    private UserDao userDao;
-    private DataSource dataSource;
+    private final UserDao userDao;
+    private final PlatformTransactionManager transactionManager;
 
-    public UserService(UserDao userDao, DataSource dataSource) {
+    public UserService(UserDao userDao, PlatformTransactionManager transactionManager) {
         this.userDao = userDao;
-        this.dataSource = dataSource;
+        this.transactionManager = transactionManager;
     }
 
-    public void createAll(List<User> userList) throws SQLException {
-        TransactionSynchronizationManager.initSynchronization();
-        Connection conn = DataSourceUtils.getConnection(dataSource);
-        conn.setAutoCommit(false);
+    public void createAll(List<User> userList) {
+        TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
         try {
             int idx = 0;
             for (User user : userList) {
@@ -33,14 +34,10 @@ public class UserService {
                 userDao.create(user);
                 idx++;
             }
-            conn.commit();
+            transactionManager.commit(status);
         } catch (Exception e){
-            conn.rollback();
+            transactionManager.rollback(status);
             throw new RuntimeException(e);
-        } finally {
-            DataSourceUtils.releaseConnection(conn, dataSource);
-            TransactionSynchronizationManager.unbindResource(dataSource);
-            TransactionSynchronizationManager.clearSynchronization();
         }
     }
 
