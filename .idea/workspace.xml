@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16cd833c-a555-405a-917b-459d01c3667b" name="변경" comment="트랜잭션 동기화 해결">
+    <list default="true" id="16cd833c-a555-405a-917b-459d01c3667b" name="변경" comment="서비스 abstract">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/service/UserSercviceTx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/service/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/config/ApplicationConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/happykoo/aop/service/UserService.java" afterDir="false" />
@@ -60,6 +62,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -87,6 +90,7 @@
     "Gradle.UserDaoTest.executor": "Debug",
     "Gradle.UserDaoTest.findUserByIdTest.executor": "Debug",
     "Gradle.UserServiceTest.createAllTest.executor": "Debug",
+    "Gradle.UserServiceTest.createAllThrowTest.executor": "Debug",
     "Gradle.UserServiceTest.executor": "Debug",
     "Gradle.UserServiceTest.test.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -159,30 +163,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="UserDaoTest.findUserByIdTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;net.happykoo.aop.service.UserDaoTest.findUserByIdTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" value="-Duser.language=ko -Duser.country=KR" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="UserServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -231,20 +211,44 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="UserServiceTest.createAllThrowTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;net.happykoo.aop.service.UserServiceTest.createAllThrowTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Gradle.UserServiceTest.createAllTest" />
+      <item itemvalue="Gradle.UserServiceTest.createAllThrowTest" />
       <item itemvalue="Gradle.UserDaoTest (1)" />
       <item itemvalue="Gradle.UserDaoTest" />
-      <item itemvalue="Gradle.UserDaoTest.findUserByIdTest" />
       <item itemvalue="Gradle.UserServiceTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.UserServiceTest" />
+        <item itemvalue="Gradle.UserServiceTest.createAllThrowTest" />
         <item itemvalue="Gradle.UserServiceTest.createAllTest" />
         <item itemvalue="Gradle.UserDaoTest (1)" />
         <item itemvalue="Gradle.UserDaoTest" />
-        <item itemvalue="Gradle.UserDaoTest.findUserByIdTest" />
       </list>
     </recent_temporary>
   </component>
@@ -264,7 +268,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1725545617973</updated>
-      <workItem from="1725545619046" duration="6985000" />
+      <workItem from="1725545619046" duration="8102000" />
     </task>
     <task id="LOCAL-00001" summary="트랜잭션 동기화 해결">
       <option name="closed" value="true" />
@@ -274,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725552088800</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="서비스 abstract">
+      <option name="closed" value="true" />
+      <created>1725552713156</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1725552713156</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,6 +294,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="트랜잭션 동기화 해결" />
-    <option name="LAST_COMMIT_MESSAGE" value="트랜잭션 동기화 해결" />
+    <MESSAGE value="서비스 abstract" />
+    <option name="LAST_COMMIT_MESSAGE" value="서비스 abstract" />
   </component>
 </project>

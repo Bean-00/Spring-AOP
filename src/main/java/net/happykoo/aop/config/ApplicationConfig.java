@@ -1,7 +1,9 @@
 package net.happykoo.aop.config;
 
 import net.happykoo.aop.dao.UserDao;
+import net.happykoo.aop.service.UserSercviceTx;
 import net.happykoo.aop.service.UserService;
+import net.happykoo.aop.service.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -31,8 +33,8 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public UserService userService(UserDao userDao, PlatformTransactionManager platformTransactionManager) {
-        return new UserService(userDao, platformTransactionManager);
+    public UserService userService(UserDao userDao, PlatformTransactionManager transactionManager) {
+        return new UserSercviceTx(transactionManager, new UserServiceImpl(userDao));
     }
 
     @Bean
