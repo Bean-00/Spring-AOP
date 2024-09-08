@@ -1,10 +1,15 @@
 package net.happykoo.aop.config;
 
 import net.happykoo.aop.dao.UserDao;
+import net.happykoo.aop.handler.TxAdvice;
 import net.happykoo.aop.handler.TxHandler;
 import net.happykoo.aop.service.UserSercviceTx;
 import net.happykoo.aop.service.UserService;
 import net.happykoo.aop.service.UserServiceImpl;
+import org.junit.jupiter.api.Test;
+import org.springframework.aop.framework.ProxyFactoryBean;
+import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.aop.support.NameMatchMethodPointcut;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -35,11 +40,39 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public UserService userService(UserDao userDao, PlatformTransactionManager transactionManager) {
+    public ProxyFactoryBean userService(UserDao userDao, PlatformTransactionManager transactionManager) {
+        ProxyFactoryBean factoryBean = new ProxyFactoryBean();
+
+
         UserService target = new UserServiceImpl(userDao);
-        return (UserService) Proxy.newProxyInstance(getClass().getClassLoader(),
-                new Class[] {UserService.class},
-                new TxHandler(transactionManager, target, "createAll"));
+        factoryBean.setTarget(target);
+        factoryBean.setInterceptorNames("txAdvisor");
+        return factoryBean;
+    }
+
+    @Bean
+    public NameMatchMethodPointcut txPointcut(){
+        NameMatchMethodPointcut pointcut = new NameMatchMethodPointcut();
+        pointcut.addMethodName("createAll");
+
+        return pointcut;
+    }
+
+    @Bean
+    public DefaultPointcutAdvisor txAdvisor(TxAdvice txAdvice,
+                                            NameMatchMethodPointcut txPointcut) {
+       DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor();
+
+       advisor.setAdvice(txAdvice);
+       advisor.setPointcut(txPointcut);
+
+
+       return advisor;
+    }
+
+    @Bean
+    public TxAdvice txAdvice(PlatformTransactionManager transactionManager) {
+        return new TxAdvice(transactionManager);
     }
 
     @Bean
